@@ -22,4 +22,3 @@ def text_to_audio(text:str):
     #os.system(f"start {path_file}")
     print(f"{bot}: {text}")
     return text
-

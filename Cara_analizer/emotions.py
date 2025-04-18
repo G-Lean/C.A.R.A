@@ -47,5 +47,4 @@ def close():
         cv2.destroyAllWindows()
     except:
         pass
-
 scan()
