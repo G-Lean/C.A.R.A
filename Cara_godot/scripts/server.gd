@@ -4,7 +4,7 @@ var socket = WebSocketPeer.new()#Creamos el sockete del Websocket
 var url = "ws://localhost:5500"#Definimos la url del puerto 5500
 
 signal msg_send
-signal msg_received(msg:String,emotion:String)
+signal msg_received(msg:String,emotion:String,audio_path:String)
 func _ready() -> void:
 	var try_connect = socket.connect_to_url(url)#Intentamos conectarmos
 	if try_connect != OK:
@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	if state == WebSocketPeer.STATE_OPEN:
 		while socket.get_available_packet_count():
 			var result = "Message from server: " + str(data_received())
-			msg_received.emit(result.get_slice("++",0),result.get_slice("++",1))
+			msg_received.emit(result.get_slice("++",0),result.get_slice("++",2),result.get_slice("++",1))
 	elif state == WebSocketPeer.STATE_CLOSED:
 		var code = socket.get_close_code()
 		var reason = socket.get_close_reason()
@@ -43,7 +43,7 @@ func send(msg:String):
 
 
 func _on_button_pressed() -> void:
-	if $message.text != "":
+	if message.text != "":
 		send(message.text)
 		$AudioStreamPlayer.stop()
 		$Emocion.text= "Emoción actual: "
