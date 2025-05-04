@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://dij4tge2f2fo4"]
+
+[ext_resource type="Script" uid="uid://cdul2waekejk3" path="res://Scenes/chat/message_bar.gd" id="1_ckpww"]
+[ext_resource type="Texture2D" uid="uid://cxsf0ygu8e4jw" path="res://Sprites/send.png" id="2_co83d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ckpww"]
+font_size = 12
+
+[node name="message_bar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ckpww")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+offset_left = 379.0
+offset_top = 535.0
+offset_right = 734.0
+offset_bottom = 607.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+wrap_mode = 1
+scroll_fit_content_height = true
+caret_blink = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+offset_left = 740.0
+offset_top = 535.0
+offset_right = 812.0
+offset_bottom = 607.0
+size_flags_horizontal = 8
+icon = ExtResource("2_co83d")
+
+[node name="max_letters" type="Label" parent="."]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 610.0
+offset_right = 730.0
+offset_bottom = 627.0
+text = "0/300"
+label_settings = SubResource("LabelSettings_ckpww")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

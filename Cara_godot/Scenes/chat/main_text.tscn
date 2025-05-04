@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://co7cwq5oykre1"]
+
+[ext_resource type="Script" uid="uid://grfl346ow8dj" path="res://scripts/main_text.gd" id="1_ibn3m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_noxan"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0hp2v"]
+font_size = 8
+font_color = Color(0.391819, 0.391819, 0.391819, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ibn3m"]
+font_size = 8
+
+[node name="main_text" type="TextEdit"]
+clip_contents = false
+offset_right = 71.0
+offset_bottom = 35.0
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+script = ExtResource("1_ibn3m")
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 61.0
+offset_bottom = 28.0
+label_settings = SubResource("LabelSettings_noxan")
+
+[node name="hour" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -12.0
+offset_right = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "HOUR"
+label_settings = SubResource("LabelSettings_0hp2v")
+
+[node name="emotion" type="Label" parent="."]
+modulate = Color(0.498039, 0.498039, 0.498039, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -12.0
+offset_right = -35.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Emotion detected"
+mouse_filter = 1
+text = "Emotion"
+label_settings = SubResource("LabelSettings_ibn3m")

@@ -1,16 +1,21 @@
-extends Node
-@onready var message = $message
-var socket = WebSocketPeer.new()#Creamos el sockete del Websocket
-var url = "ws://localhost:5500"#Definimos la url del puerto 5500
+extends Control
+@onready var promt_es_file = "res://promts/promt_es.txt"
 
-signal msg_send
-signal msg_received(msg:String,emotion:String,audio_path:String)
+@onready var message_bar = $main_message/message_bar
+@onready var control = $control
+
+var socket = WebSocketPeer.new()#Creamos el sockect del Websocket
+var url = "ws://localhost:5501"#Definimos la url del puerto 5501
+
+signal msg_send(msg:String)
+signal msg_received(msg:String,emotion:String)
 func _ready() -> void:
 	var try_connect = socket.connect_to_url(url)#Intentamos conectarmos
 	if try_connect != OK:
 		set_process(false)#Desabilita el process en caso de no poder conectarse
 		print("connection failed")
 	else:
+		set_process(true)
 		print("connection success")
 
 func _process(_delta: float) -> void:
@@ -18,12 +23,14 @@ func _process(_delta: float) -> void:
 	var state = socket.get_ready_state()
 	if state == WebSocketPeer.STATE_OPEN:
 		while socket.get_available_packet_count():
-			var result = "Message from server: " + str(data_received())
-			msg_received.emit(result.get_slice("++",0),result.get_slice("++",2),result.get_slice("++",1))
+			var result = str(data_received())
+			msg_received.emit(result.get_slice("++",0),result.get_slice("++",1))
+			message_bar.disabled = false
 	elif state == WebSocketPeer.STATE_CLOSED:
 		var code = socket.get_close_code()
 		var reason = socket.get_close_reason()
-		print("WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1])
+		control.on_menu = true
+		$menu/Debug.text = "WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1]
 		set_process(false) 
 
 func data_received():
@@ -34,18 +41,25 @@ func data_received():
 		return packet.get_string_from_utf8()
 	return bytes_to_var(packet)
 
-func send(msg:String):
+func _on_message_bar_send_message(msg: String):
+	print("trying to send the message")
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
-		msg_send.emit()
-		return socket.send_text(msg)
+		msg_send.emit(msg)
+		message_bar.disabled = true
+		return socket.send_text("[message]"+msg) if not control.on_menu else socket.send_text(msg)
 	else:
-		$Debug.text = "servidor desconectado"
+		print("Server disconnect")
+		msg_received.emit("[Server disconnect]","unknown")
+		return
 
-
-func _on_button_pressed() -> void:
-	if message.text != "":
-		send(message.text)
-		$AudioStreamPlayer.stop()
-		$Emocion.text= "Emoción actual: "
-	else:
-		$Debug.text = "El mensaje esta vacio"
+func _on_start_bot_pressed() -> void:
+	if control.on_menu:
+		$menu/start_bot.disabled = true
+		var state = socket.get_ready_state()
+		if state == WebSocketPeer.STATE_CLOSED:#Reintenta conectarse al servidor
+			_ready()
+			print("WebSocket open")
+		var File = FileAccess.open(promt_es_file,FileAccess.READ)#Accedemos al archivo del promt
+		var File_content = File.get_as_text()#Obtenemos el contenido del archivo de texto
+		message_bar.emit_signal("send_message","[Initial_promt]"+File_content)
+		
