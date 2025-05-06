@@ -34,5 +34,5 @@ La interfaz Godot muestra la respuesta de la IA
 
 ## APP Screenshot
 
-![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot%20Response.png)
+![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot_basic.jpg)
 
