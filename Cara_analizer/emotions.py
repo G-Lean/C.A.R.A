@@ -1,9 +1,8 @@
 import cv2
 from deepface import DeepFace
 
-
 # Inicializar
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+face_cascade = face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 cap = cv2.VideoCapture(0)

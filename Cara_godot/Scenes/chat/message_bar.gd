@@ -26,6 +26,12 @@ func _physics_process(_delta: float) -> void:
 		$Button.disabled = (text_bar.text == "") if (letters <= max_letters) else true
 	else:
 		$Button.disabled = true
+	
+	if not $Button.disabled:
+		if not Input.is_action_pressed("ctrl"):
+			if Input.is_action_just_pressed("send"):
+				text_bar.text = text_bar.text.trim_suffix("\n")
+				$Button.emit_signal("pressed")
 func _enable_button():
 	disabled = true
 

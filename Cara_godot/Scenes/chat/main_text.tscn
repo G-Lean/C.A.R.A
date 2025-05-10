@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://co7cwq5oykre1"]
+[gd_scene load_steps=6 format=3 uid="uid://co7cwq5oykre1"]
 
 [ext_resource type="Script" uid="uid://grfl346ow8dj" path="res://scripts/main_text.gd" id="1_ibn3m"]
 
@@ -10,6 +10,8 @@ font_color = Color(0.391819, 0.391819, 0.391819, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ibn3m"]
 font_size = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ibn3m"]
 
 [node name="main_text" type="TextEdit"]
 clip_contents = false
@@ -64,3 +66,17 @@ tooltip_text = "Emotion detected"
 mouse_filter = 1
 text = "Emotion"
 label_settings = SubResource("LabelSettings_ibn3m")
+
+[node name="main" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = 5.0
+offset_right = 61.0
+offset_bottom = 28.0
+focus_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ibn3m")
+fit_content = true
+scroll_active = false
+context_menu_enabled = true
+selection_enabled = true

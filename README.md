@@ -8,11 +8,9 @@
 
 - OpenCV – Detección facial y procesamiento de imagen.
 
-- gTTS – Síntesis de voz.
-
 - websockets – Comunicación cliente-servidor.
 
-- LangChain + Ollama – LLM local.(Requiere que hayas instalado y ejecutado Ollama antes)
+- OpenAi - Conexión con el bot de openrouter
 
 ###  Frontend (Godot)
 Interfaz construida con Godot Engine.
@@ -26,13 +24,14 @@ El backend escanea rostros usando la cámara.
 
 Analiza la emoción dominante usando DeepFace.
 
-La emoción se combina con el mensaje del usuario para generar una respuesta empática usando una IA previamente descargada con Ollama.
+La emoción se combina con el mensaje del usuario para generar una respuesta empática usando una IA.
 
-La respuesta es sintetizada en voz y enviada al frontend.
+La API para conectar con la I.A previamente elegida en https://openrouter.ai/ limitado a las opciones del programa.
 
-La interfaz Godot muestra la respuesta de la IA
+La interfaz Godot muestra la respuesta de la IA.
+
 
 ## APP Screenshot
 
-![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot%20Response.png)
+![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot%20basic.png)
 

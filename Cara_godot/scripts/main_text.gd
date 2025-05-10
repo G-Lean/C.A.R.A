@@ -7,7 +7,7 @@ var new_text:String:
 var max_characters :int= 20
 
 func _show_text(new:String) -> void:
-	var text_content:Label = $text
+	var text_content = $text
 	var hour:Label = $hour
 	var time = Time.get_time_dict_from_system()#Obtenemos la hora local
 	var actual_size:int = 0#Contador de cuantas letras hay
@@ -29,6 +29,9 @@ func _show_text(new:String) -> void:
 				text_content.text += "\n"+character 
 				actual_size = 0 #reinicia el contador
 	size.x = text_content.get_minimum_size().x + 30#Ajusta el tamaño del main
+	$main.size = size
+	$main.text = text_content.text
+	text_content.text = ""
 func _setup() -> void:
 	var emotion_label:Label = get_node("emotion")
 	emotion_label.text = emotion
@@ -41,8 +44,10 @@ func _setup() -> void:
 		emotion_label.scale.x = -1
 		$hour.scale.x = -1
 		$text.scale.x = -1
+		$main.scale.x = -1
 		$hour.position.x = 25
 		$text.position.x = size.x-10
+		$main.position.x = size.x-10
 		emotion_label.position.x = 60
 
 	match emotion:#Control del color de las emociones

@@ -16,7 +16,7 @@ func _ready() -> void:
 		print("connection failed")
 	else:
 		set_process(true)
-		print("connection success")
+		print("connection successful")
 
 func _process(_delta: float) -> void:
 	socket.poll()
@@ -30,6 +30,7 @@ func _process(_delta: float) -> void:
 		var code = socket.get_close_code()
 		var reason = socket.get_close_reason()
 		control.on_menu = true
+		$menu/start_bot.disabled = false
 		$menu/Debug.text = "WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1]
 		set_process(false) 
 
@@ -41,8 +42,7 @@ func data_received():
 		return packet.get_string_from_utf8()
 	return bytes_to_var(packet)
 
-func _on_message_bar_send_message(msg: String):
-	print("trying to send the message")
+func _send(msg:String):
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		msg_send.emit(msg)
 		message_bar.disabled = true
@@ -52,6 +52,9 @@ func _on_message_bar_send_message(msg: String):
 		msg_received.emit("[Server disconnect]","unknown")
 		return
 
+func _on_message_bar_send_message(msg: String):
+	return _send(msg)
+
 func _on_start_bot_pressed() -> void:
 	if control.on_menu:
 		$menu/start_bot.disabled = true
@@ -59,7 +62,16 @@ func _on_start_bot_pressed() -> void:
 		if state == WebSocketPeer.STATE_CLOSED:#Reintenta conectarse al servidor
 			_ready()
 			print("WebSocket open")
+		
+		var model = $menu.model_in_use 
+		var api = $menu.ApiKeys[model]
+		model = $menu._get_value(model,"Dir")
+		if api != "":
+			_send("[API_KEY]"+api+"[MODEL]"+model)
+		else:
+			msg_received.emit("[API_IS_NULL]","unknown")
+			return
+		
 		var File = FileAccess.open(promt_es_file,FileAccess.READ)#Accedemos al archivo del promt
 		var File_content = File.get_as_text()#Obtenemos el contenido del archivo de texto
-		message_bar.emit_signal("send_message","[Initial_promt]"+File_content)
-		
+		_send("[Initial_promt]"+File_content)
