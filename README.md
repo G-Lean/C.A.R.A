@@ -33,8 +33,8 @@ La interfaz Godot muestra la respuesta de la IA.
 
 ## APP Screenshot
 
-<<<<<<< HEAD
+
 ![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot%20basic.png)
-=======
+
 
 
