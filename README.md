@@ -36,6 +36,5 @@ La interfaz Godot muestra la respuesta de la IA.
 <<<<<<< HEAD
 ![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot%20basic.png)
 =======
-![Godot](https://github.com/G-Lean/C.A.R.A/blob/main/screenshots/Godot_basic.jpg)
->>>>>>> 9e00e3321fd21c26dbc962cd8b51e76368828144
+
 
