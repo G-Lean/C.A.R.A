@@ -14,7 +14,7 @@ size_flags_horizontal = 3
 script = ExtResource("1_0hp2v")
 
 [node name="balloon_container" type="Node2D" parent="."]
-position = Vector2(500, 44)
+position = Vector2(490, 44)
 
 [node name="name" type="Label" parent="balloon_container"]
 anchors_preset = 5
