@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dij4tge2f2fo4"]
 
-[ext_resource type="Script" uid="uid://cdul2waekejk3" path="res://Scenes/chat/message_bar.gd" id="1_ckpww"]
+[ext_resource type="Script" uid="uid://cdul2waekejk3" path="res://scripts/message_bar.gd" id="1_ckpww"]
 [ext_resource type="Texture2D" uid="uid://cxsf0ygu8e4jw" path="res://Sprites/send.png" id="2_co83d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ckpww"]

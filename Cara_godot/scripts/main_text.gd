@@ -16,7 +16,7 @@ func _show_text(new:String) -> void:
 	#Se vacian el contenido de los textos
 	text_content.text = ""
 	text = ""
-	for character in new:#Se añaden los caracteres uno a uno
+	for character in new:#Se añaden los caracteres uno a uno para calcular el tamaño segun el texto
 		if  character == "\n":#Si es un salto de linea se salta la linea
 			text += "\n"
 			text_content.text += "\n"
@@ -29,9 +29,9 @@ func _show_text(new:String) -> void:
 				text_content.text += "\n"+character 
 				actual_size = 0 #reinicia el contador
 	size.x = text_content.get_minimum_size().x + 30#Ajusta el tamaño del main
-	$main.size = size
-	$main.text = text_content.text
-	text_content.text = ""
+	text_content.autowrap_mode = 3
+	text_content.size = size-Vector2(10,0)
+	text_content.text = new#Se añade el texto original sin los saltos de linea
 func _setup() -> void:
 	var emotion_label:Label = get_node("emotion")
 	emotion_label.text = emotion
@@ -44,10 +44,8 @@ func _setup() -> void:
 		emotion_label.scale.x = -1
 		$hour.scale.x = -1
 		$text.scale.x = -1
-		$main.scale.x = -1
 		$hour.position.x = 25
 		$text.position.x = size.x-10
-		$main.position.x = size.x-10
 		emotion_label.position.x = 60
 
 	match emotion:#Control del color de las emociones

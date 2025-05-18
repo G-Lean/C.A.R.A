@@ -20,7 +20,6 @@ func _ready() -> void:
 		$balloon_container.scale.x = -1
 		user_name.scale.x = -1
 		user_name.position.x = main_text.position.x+50
-		user_name.text = "CARA~"
 		main_text.is_right = true
 		main_text.emotion = emotion
 	main_text.text = text

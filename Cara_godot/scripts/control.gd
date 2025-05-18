@@ -46,7 +46,7 @@ func _on_server_msg_received(msg: String, emotion: String) -> void:
 			"[Bot initialized]":
 				Debug.text = 'BOT iniciado'
 				on_menu = false
-		Debug.text += "\n"+msg
+		Debug.text += ("\n"+msg).trim_prefix("\n")
 		return
 	$"../main_message/message_bar"._focus()
 	last_emotion = emotion
@@ -56,6 +56,7 @@ func _on_server_msg_received(msg: String, emotion: String) -> void:
 func _generate_left_msg(msg:String) -> void:
 	var balloon_Scene:Control = balloon_text.instantiate()
 	var wait_Scene:Control = balloon_wait.instantiate()
+	balloon_Scene.user = menu._get_value("Parameters","User_name")
 	balloon_Scene.text = msg
 	balloon_container.add_child(balloon_Scene)
 	balloon_container.add_child(wait_Scene)
@@ -65,6 +66,7 @@ func _generate_right_msg(msg:String) -> void:
 	balloon_Scene.text = msg
 	balloon_Scene.right = true
 	balloon_Scene.emotion = last_emotion
+	balloon_Scene.user = "CARA"
 	balloon_container.add_child(balloon_Scene)
 	var wait_exist = balloon_container.has_node("wait")
 	if wait_exist:

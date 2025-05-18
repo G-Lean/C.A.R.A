@@ -24,6 +24,14 @@ buses/default_bus_layout=""
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 
+[dotnet]
+
+project/assembly_name="Cara"
+
+[gui]
+
+fonts/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
+
 [input]
 
 send={
