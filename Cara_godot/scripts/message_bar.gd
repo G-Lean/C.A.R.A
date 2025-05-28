@@ -8,7 +8,7 @@ signal send_message(msg:String)
 
 func _on_button_pressed() -> void:
 	if text_bar.text != "" :
-		send_message.emit(text_bar.text)
+		send_message.emit("[message]"+text_bar.text)
 		text_bar.text = ""
 		$Button.disabled = true
 

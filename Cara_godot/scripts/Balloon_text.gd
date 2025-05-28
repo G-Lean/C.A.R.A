@@ -2,6 +2,7 @@ extends Control
 
 
 @export var user:String = "~User"
+@export var user_color:Color = Color.WHITE
 @export var text :String = ""
 @export var right :bool = false
 @export var emotion:String = "unknown"

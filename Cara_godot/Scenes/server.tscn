@@ -1,9 +1,177 @@
-[gd_scene load_steps=23 format=3 uid="uid://cs5a23eqvof4n"]
+[gd_scene load_steps=31 format=3 uid="uid://cs5a23eqvof4n"]
 
 [ext_resource type="Script" uid="uid://csiqblodqi7dy" path="res://scripts/server.gd" id="1_2swk3"]
 [ext_resource type="Script" uid="uid://dhhgbs55bvv0n" path="res://scripts/control.gd" id="2_8wms1"]
+[ext_resource type="Texture2D" uid="uid://bm3prtit6ncan" path="res://Sprites/settings.svg" id="3_6es20"]
 [ext_resource type="PackedScene" uid="uid://dij4tge2f2fo4" path="res://Scenes/chat/message_bar.tscn" id="3_g4gju"]
+[ext_resource type="Script" uid="uid://c41417otn05y2" path="res://scripts/settings.gd" id="3_gfir3"]
 [ext_resource type="Script" uid="uid://deragx21xorbk" path="res://scripts/menu.gd" id="4_8wms1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6es20"]
+
+[sub_resource type="Animation" id="Animation_g4gju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Modern_UI/Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.290196, 0, 0.466667, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("settings/eje:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../menu/Debug:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1027, 118)]
+}
+
+[sub_resource type="Animation" id="Animation_6es20"]
+resource_name = "config_close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(270, 648), Vector2(62, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Modern_UI/Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.290196, 0, 0.466667, 0.588235), Color(0.290196, 0, 0.466667, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("settings/eje:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../menu/Debug:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(819, 118), Vector2(1027, 118)]
+}
+
+[sub_resource type="Animation" id="Animation_8wms1"]
+resource_name = "config_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(62, 648), Vector2(270, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Modern_UI/Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.290196, 0, 0.466667, 1), Color(0.290196, 0, 0.466667, 0.588235)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("settings/eje:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../menu/Debug:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1027, 118), Vector2(819, 118)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4gju"]
+_data = {
+&"RESET": SubResource("Animation_g4gju"),
+&"config_close": SubResource("Animation_6es20"),
+&"config_open": SubResource("Animation_8wms1")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_21ul1"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_8wms1"]
 
@@ -202,10 +370,19 @@ script = ExtResource("1_2swk3")
 [node name="control" type="Node" parent="."]
 script = ExtResource("2_8wms1")
 
-[node name="Modern_UI" type="CanvasLayer" parent="."]
-layer = -1
+[node name="Modern_UI" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Background" type="ColorRect" parent="Modern_UI"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -215,24 +392,198 @@ grow_vertical = 2
 color = Color(0.290196, 0, 0.466667, 1)
 
 [node name="side_left" type="ColorRect" parent="Modern_UI"]
+layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 62.0
 grow_vertical = 2
 color = Color(0, 0, 0, 0.509804)
 
-[node name="side_right" type="ColorRect" parent="Modern_UI"]
+[node name="side_settings" type="ColorRect" parent="."]
+z_index = 10
 clip_contents = true
+layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = 61.0
+offset_left = 1151.0
+offset_right = 1213.0
+offset_bottom = 648.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(-1, 1)
 color = Color(0, 0, 0, 0.5)
+script = ExtResource("3_gfir3")
+
+[node name="settings" type="Control" parent="side_settings"]
+z_index = 30
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 33.0
+offset_right = 32.0
+offset_bottom = 33.0
+
+[node name="eje" type="Control" parent="side_settings/settings"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 3.14159
+
+[node name="settings_button" type="Button" parent="side_settings/settings/eje"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+scale = Vector2(2, 2)
+mouse_default_cursor_shape = 2
+theme_override_icons/icon = ExtResource("3_6es20")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6es20")
+flat = true
+
+[node name="settings_animation" type="AnimationPlayer" parent="side_settings"]
+libraries = {
+&"": SubResource("AnimationLibrary_g4gju")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="side_settings"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 25.0
+offset_right = 434.0
+offset_bottom = 679.0
+scale = Vector2(-1, 1)
+theme_override_constants/separation = 80
+
+[node name="User_name" type="Label" parent="side_settings/VBoxContainer"]
+layout_mode = 2
+text = "User name"
+horizontal_alignment = 1
+
+[node name="User_name" type="TextEdit" parent="side_settings/VBoxContainer/User_name"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 24.0
+offset_right = 163.0
+offset_bottom = 66.0
+text = "~User"
+placeholder_text = "User Name"
+context_menu_enabled = false
+
+[node name="User_color" type="Label" parent="side_settings/VBoxContainer"]
+layout_mode = 2
+text = "User name color"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="side_settings/VBoxContainer/User_color"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = 28.0
+offset_right = 156.0
+offset_bottom = 84.0
+
+[node name="Red" type="HSlider" parent="side_settings/VBoxContainer/User_color/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+max_value = 255.0
+value = 255.0
+rounded = true
+
+[node name="value" type="Label" parent="side_settings/VBoxContainer/User_color/VBoxContainer/Red"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -4.0
+offset_right = 218.0
+offset_bottom = 19.0
+text = "255"
+
+[node name="Green" type="HSlider" parent="side_settings/VBoxContainer/User_color/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+max_value = 255.0
+value = 255.0
+rounded = true
+
+[node name="value" type="Label" parent="side_settings/VBoxContainer/User_color/VBoxContainer/Green"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -4.0
+offset_right = 218.0
+offset_bottom = 19.0
+text = "255"
+
+[node name="Blue" type="HSlider" parent="side_settings/VBoxContainer/User_color/VBoxContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+max_value = 255.0
+value = 255.0
+rounded = true
+
+[node name="value" type="Label" parent="side_settings/VBoxContainer/User_color/VBoxContainer/Blue"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = -4.0
+offset_right = 218.0
+offset_bottom = 19.0
+text = "255"
+
+[node name="Lang" type="Label" parent="side_settings/VBoxContainer"]
+layout_mode = 2
+text = "Language"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="side_settings/VBoxContainer/Lang"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 133.0
+offset_bottom = 63.0
+selected = 1
+item_count = 2
+popup/item_0/text = "es"
+popup/item_0/id = 0
+popup/item_1/text = "en"
+popup/item_1/id = 1
+
+[node name="Max_history" type="Label" parent="side_settings/VBoxContainer"]
+layout_mode = 2
+text = "Max history:"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="HSlider" parent="side_settings/VBoxContainer/Max_history"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 177.0
+offset_bottom = 50.0
+min_value = 10.0
+max_value = 50.0
+value = 30.0
+rounded = true
+
+[node name="value" type="Label" parent="side_settings/VBoxContainer/Max_history/ProgressBar"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -33.0
+offset_right = 168.0
+offset_bottom = -10.0
+text = "30"
+horizontal_alignment = 2
+
+[node name="Clear_history" type="CheckButton" parent="side_settings/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_21ul1")
+text = "       Clear History"
+alignment = 1
+
+[node name="Apply" type="Button" parent="side_settings/VBoxContainer"]
+z_index = 10
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6es20")
+text = "Apply Changes"
 
 [node name="main_message" type="Node2D" parent="."]
 visible = false
@@ -265,17 +616,25 @@ offset_left = 512.0
 offset_top = 322.0
 offset_right = 615.0
 offset_bottom = 353.0
+mouse_default_cursor_shape = 2
+disabled = true
 text = "CHAT"
 
 [node name="Debug" type="TextEdit" parent="menu"]
 offset_left = 62.0
 offset_top = 531.0
 offset_right = 1089.0
-offset_bottom = 658.0
+offset_bottom = 649.0
 size_flags_horizontal = 3
 mouse_filter = 2
 editable = false
 context_menu_enabled = false
+
+[node name="main_text" type="RichTextLabel" parent="menu/Debug"]
+modulate = Color(0.590441, 0.590441, 0.590441, 0.588235)
+layout_mode = 0
+offset_right = 1025.0
+offset_bottom = 81.0
 
 [node name="Git" type="Label" parent="menu/Debug"]
 modulate = Color(0.494854, 0.494855, 0.494854, 1)
@@ -347,6 +706,7 @@ popup/item_2/id = 2
 
 [node name="Set_Api" type="Button" parent="menu/Model_selector/HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Set API KEY"
 
 [node name="API" type="TextEdit" parent="menu/Model_selector/HBoxContainer"]
@@ -359,16 +719,26 @@ placeholder_text = "API KEY"
 [node name="Accept" type="Button" parent="menu/Model_selector/HBoxContainer"]
 visible = false
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "✔"
 
 [node name="Deny" type="Button" parent="menu/Model_selector/HBoxContainer"]
 visible = false
 modulate = Color(0.494854, 0.494855, 0.494854, 1)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "✘"
 
 [connection signal="msg_received" from="." to="control" method="_on_server_msg_received"]
 [connection signal="msg_send" from="." to="control" method="_on_server_msg_send"]
+[connection signal="pressed" from="side_settings/settings/eje/settings_button" to="side_settings" method="_on_settings_button_pressed"]
+[connection signal="animation_finished" from="side_settings/settings_animation" to="side_settings" method="_on_settings_animation_animation_finished"]
+[connection signal="value_changed" from="side_settings/VBoxContainer/User_color/VBoxContainer/Red" to="side_settings" method="_on_red_value_changed"]
+[connection signal="value_changed" from="side_settings/VBoxContainer/User_color/VBoxContainer/Green" to="side_settings" method="_on_green_value_changed"]
+[connection signal="value_changed" from="side_settings/VBoxContainer/User_color/VBoxContainer/Blue" to="side_settings" method="_on_blue_value_changed"]
+[connection signal="value_changed" from="side_settings/VBoxContainer/Max_history/ProgressBar" to="side_settings" method="_on_progress_bar_value_changed"]
+[connection signal="pressed" from="side_settings/VBoxContainer/Apply" to="side_settings" method="_on_apply_pressed"]
+[connection signal="sort_children" from="main_message/ScrollContainer/VBoxContainer" to="control" method="_on_v_box_container_sort_children"]
 [connection signal="send_message" from="main_message/message_bar" to="." method="_on_message_bar_send_message"]
 [connection signal="pressed" from="menu/start_bot" to="." method="_on_start_bot_pressed"]
 [connection signal="pressed" from="menu/Debug/Git/git_link" to="menu" method="_on_git_link_pressed"]

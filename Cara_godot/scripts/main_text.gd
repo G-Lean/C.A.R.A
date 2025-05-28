@@ -32,6 +32,7 @@ func _show_text(new:String) -> void:
 	text_content.autowrap_mode = 3
 	text_content.size = size-Vector2(10,0)
 	text_content.text = new#Se añade el texto original sin los saltos de linea
+	
 func _setup() -> void:
 	var emotion_label:Label = get_node("emotion")
 	emotion_label.text = emotion
@@ -63,5 +64,9 @@ func _setup() -> void:
 			emotion_label.modulate = Color(1, 0, 1)#Rosa
 		"FEAR":#Miedo
 			emotion_label.modulate = Color(0.6, 0, 0.7)#Morado
+	emotion_label.text = tr(emotion)
+	var traduction = tr("Detected")
+	emotion_label.tooltip_text = traduction
+	if traduction != emotion:#Comparamos si estaba en inlges o español
+		emotion_label.position.x = 70#Movemos la posicion si estaba en español
 	
-		

@@ -1,7 +1,7 @@
 extends Control
-@onready var promt_es_file = "res://promts/promt_es.txt"
+@onready var promt_file = "res://promts/promt_"
 
-@onready var message_bar = $main_message/message_bar
+
 @onready var control = $control
 
 var socket = WebSocketPeer.new()#Creamos el sockect del Websocket
@@ -25,13 +25,12 @@ func _process(_delta: float) -> void:
 		while socket.get_available_packet_count():
 			var result = str(data_received())
 			msg_received.emit(result.get_slice("++",0),result.get_slice("++",1))
-			message_bar.disabled = false
 	elif state == WebSocketPeer.STATE_CLOSED:
 		var code = socket.get_close_code()
 		var reason = socket.get_close_reason()
 		control.on_menu = true
 		$menu/start_bot.disabled = false
-		$menu/Debug.text = "WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1]
+		$menu/Debug/main_text.text = "WebSocket closed with code: %d, reason %s. Clean: %s" % [code, reason, code != -1]
 		set_process(false) 
 
 func data_received():
@@ -45,8 +44,7 @@ func data_received():
 func _send(msg:String):
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		msg_send.emit(msg)
-		message_bar.disabled = true
-		return socket.send_text("[message]"+msg) if not control.on_menu else socket.send_text(msg)
+		return socket.send_text(msg)
 	else:
 		print("Server disconnect")
 		msg_received.emit("[Server disconnect]","unknown")
@@ -71,7 +69,8 @@ func _on_start_bot_pressed() -> void:
 		else:
 			msg_received.emit("[API_IS_NULL]","unknown")
 			return
-		
-		var File = FileAccess.open(promt_es_file,FileAccess.READ)#Accedemos al archivo del promt
+		promt_file += $menu._get_value("Parameters","Language")+".txt" if  $menu._get_value("Parameters","Language") == "es" else "en.txt"
+		print(promt_file)
+		var File = FileAccess.open(promt_file,FileAccess.READ)#Accedemos al archivo del promt
 		var File_content = File.get_as_text()#Obtenemos el contenido del archivo de texto
 		_send("[Initial_promt]"+File_content)

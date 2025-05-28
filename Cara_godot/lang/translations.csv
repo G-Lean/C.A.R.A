@@ -1,0 +1,16 @@
+keys,en,es
+SetApi,Set Api Key,Poner Api Key
+User_name,User Name,Nombre de Usuario
+User_color,User Color,Color de Usuario
+Lang,Language,Lenguage
+History,Max History,Historial
+Clear,Clear History,Limpiar Historial
+Apply_Changes,Apply Changes,Aplicar Cambios
+UNKNOWN,UNKNOWN,DESCONOCIDO
+SAD,SAD,TRISTE
+ANGRY,ANGRY,ENOJADO
+DISGUST,DISGUST,DESAGRADO
+HAPPY,HAPPY,FELIZ
+SURPRISE,SURPRISE,SORPRESA
+FEAR,FEAR,MIEDO
+Detected,Emotion Detected,Emoción Detectada

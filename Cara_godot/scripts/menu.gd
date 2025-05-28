@@ -33,7 +33,7 @@ func _create_file() -> void:
 		config.set_value("Parameters","User_name","User")
 		config.set_value("Parameters","User_color",Color.WHITE)
 		config.set_value("Parameters","Language","es-ES")
-		config.set_value("Parameters","Max_memory",30)
+		config.set_value("Parameters","Max_history",30)
 		config.save(SaveFilePath)
 		print("Make model.ini")
 
