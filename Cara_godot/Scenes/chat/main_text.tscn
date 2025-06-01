@@ -13,15 +13,16 @@ font_size = 8
 
 [node name="main_text" type="TextEdit"]
 clip_contents = false
+custom_minimum_size = Vector2(71, 35)
 offset_right = 71.0
 offset_bottom = 35.0
 editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 empty_selection_clipboard_enabled = false
-wrap_mode = 1
 autowrap_mode = 1
 scroll_fit_content_height = true
+scroll_fit_content_width = true
 script = ExtResource("1_ibn3m")
 
 [node name="text" type="RichTextLabel" parent="."]
@@ -35,7 +36,6 @@ focus_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ibn3m")
 fit_content = true
 scroll_active = false
-autowrap_mode = 0
 context_menu_enabled = true
 selection_enabled = true
 

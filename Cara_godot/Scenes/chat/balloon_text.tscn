@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://crkcav3qx5q00"]
+[gd_scene load_steps=3 format=3 uid="uid://crkcav3qx5q00"]
 
 [ext_resource type="Script" uid="uid://ltnjwo2olwca" path="res://scripts/Balloon_text.gd" id="1_0hp2v"]
 [ext_resource type="PackedScene" uid="uid://co7cwq5oykre1" path="res://Scenes/chat/main_text.tscn" id="2_0hp2v"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0hp2v"]
-font_color = Color(0, 1, 0, 1)
 
 [node name="balloon_text" type="Control"]
 layout_mode = 3
@@ -26,7 +23,6 @@ offset_right = -431.0
 offset_bottom = -19.0
 grow_horizontal = 2
 text = "~USER"
-label_settings = SubResource("LabelSettings_0hp2v")
 
 [node name="main_text" parent="balloon_container" instance=ExtResource("2_0hp2v")]
 anchors_preset = 4

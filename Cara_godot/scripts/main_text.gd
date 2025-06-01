@@ -10,28 +10,18 @@ func _show_text(new:String) -> void:
 	var text_content = $text
 	var hour:Label = $hour
 	var time = Time.get_time_dict_from_system()#Obtenemos la hora local
-	var actual_size:int = 0#Contador de cuantas letras hay
 	
 	hour.text = ("%02d:%02d" % [time.hour, time.minute])
-	#Se vacian el contenido de los textos
-	text_content.text = ""
+
+	text = new
+	var new_size_x = get_minimum_size().x 
 	text = ""
-	for character in new:#Se añaden los caracteres uno a uno para calcular el tamaño segun el texto
-		if  character == "\n":#Si es un salto de linea se salta la linea
-			text += "\n"
-			text_content.text += "\n"
-		else:#Si no es salto de linea agrega el caracter
-			if actual_size < 100:
-				text_content.text += character
-				actual_size += 1
-			else:#Si se llega a 100 caractes, realiza un salto de linea en ambos textos
-				text += "\n"
-				text_content.text += "\n"+character 
-				actual_size = 0 #reinicia el contador
-	size.x = text_content.get_minimum_size().x + 30#Ajusta el tamaño del main
-	text_content.autowrap_mode = 3
-	text_content.size = size-Vector2(10,0)
-	text_content.text = new#Se añade el texto original sin los saltos de linea
+	size.x = new_size_x+30 if new_size_x < 800 else 830.0
+	
+	text_content.size.x = size.x-10
+	text_content.text = new
+	var new_size_y = text_content.get_minimum_size().y+10
+	size.y = new_size_y
 	
 func _setup() -> void:
 	var emotion_label:Label = get_node("emotion")

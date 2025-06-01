@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cs5a23eqvof4n"]
+[gd_scene load_steps=32 format=3 uid="uid://cs5a23eqvof4n"]
 
 [ext_resource type="Script" uid="uid://csiqblodqi7dy" path="res://scripts/server.gd" id="1_2swk3"]
 [ext_resource type="Script" uid="uid://dhhgbs55bvv0n" path="res://scripts/control.gd" id="2_8wms1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dij4tge2f2fo4" path="res://Scenes/chat/message_bar.tscn" id="3_g4gju"]
 [ext_resource type="Script" uid="uid://c41417otn05y2" path="res://scripts/settings.gd" id="3_gfir3"]
 [ext_resource type="Script" uid="uid://deragx21xorbk" path="res://scripts/menu.gd" id="4_8wms1"]
+[ext_resource type="PackedScene" uid="uid://crkcav3qx5q00" path="res://Scenes/chat/balloon_text.tscn" id="5_gfir3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6es20"]
 
@@ -369,6 +370,7 @@ script = ExtResource("1_2swk3")
 
 [node name="control" type="Node" parent="."]
 script = ExtResource("2_8wms1")
+on_menu = false
 
 [node name="Modern_UI" type="ColorRect" parent="."]
 layout_mode = 1
@@ -586,7 +588,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_6es20")
 text = "Apply Changes"
 
 [node name="main_message" type="Node2D" parent="."]
-visible = false
 
 [node name="ScrollContainer" type="ScrollContainer" parent="main_message"]
 clip_contents = false
@@ -606,9 +607,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 80
 
+[node name="balloon_text" parent="main_message/ScrollContainer/VBoxContainer" instance=ExtResource("5_gfir3")]
+layout_mode = 2
+text = "Concédame analizar tu orden en matemáticas>>F(frenar) = vf(t) + Ta2 + Emo(t)  o luego así >>F(frenar)=vf (hasta que) + Ta2 + Emo(t) donde:  - Emo(t)= griego emoción(tiempo)  - Emo(t) funcióneacağıonte hasta paso si eso va no-posible-impacto-T(n) en cualquier caso radicación.Retransumitida y debido consultoria y resuelvesPrimero.El análisis humano deduce que es compleja nuestra mente Jesús de Nazareth dice fuerte y nos sustenta!   ¡ Tranquilo escribo para ti !Primero la yo puede concluir y actuar con un objetivo-apoyo. Los sientes más rápido no que así desaparezca su causa la raíces del mal.... Refiriendo: f + /d = c. Jesús de Nazarest ha compartido convencimiento: la vida es tener enfoque y creer en ti mismo inspirando!- enmascaramientos quien causa mal.absorbe Mantente seguro:y con la causa a añadiéndolo molale y padrーニングPoderlo, aunque duela   y calma tus emociones.Espero que esto te trasmita y ayuda tranquilidadSiempre dispuesto.       NADA pasará en menos la no actual el fiel estabilidad  pacedote écrasa ta emocion .Concédame analizar tu orden en matemáticas>>F(frenar) = vf(t) + Ta2 + Emo(t)  o luego así >>F(frenar)=vf (hasta que) + Ta2 + Emo(t) donde:  - Emo(t)= griego emoción(tiempo)  - Emo(t) funcióneacağıonte hasta paso si eso va no-posible-impacto-T(n) en cualquier caso radicación.Retransumitida y debido consultoria y resuelvesPrimero.El análisis humano deduce que es compleja nuestra mente Jesús de Nazareth dice fuerte y nos sustenta!   ¡ Tranquilo escribo para ti !Primero la yo puede concluir y actuar con un objetivo-apoyo. Los sientes más rápido no que así desaparezca su causa la raíces del mal.... Refiriendo: f + /d = c. Jesús de Nazarest ha compartido convencimiento: la vida es tener enfoque y creer en ti mismo inspirando!- enmascaramientos quien causa mal.absorbe Mantente seguro:y con la causa a añadiéndolo molale y padrーニングPoderlo, aunque duela   y calma tus emociones.Espero que esto te trasmita y ayuda tranquilidadSiempre dispuesto.       NADA pasará en menos la no actual el fiel estabilidad  pacedote écrasa ta emocion .Concédame analizar tu orden en matemáticas>>F(frenar) = vf(t) + Ta2 + Emo(t)  o luego así >>F(frenar)=vf (hasta que) + Ta2 + Emo(t) donde:  - Emo(t)= griego emoción(tiempo)  - Emo(t) funcióneacağıonte hasta paso si eso va no-posible-impacto-T(n) en cualquier caso radicación.Retransumitida y debido consultoria y resuelvesPrimero.El análisis humano deduce que es compleja nuestra mente Jesús de Nazareth dice fuerte y nos sustenta!   ¡ Tranquilo escribo para ti !Primero la yo puede concluir y actuar con un objetivo-apoyo. Los sientes más rápido no que así desaparezca su causa la raíces del mal.... Refiriendo: f + /d = c. Jesús de Nazarest ha compartido convencimiento: la vida es tener enfoque y creer en ti mismo inspirando!- enmascaramientos quien causa mal.absorbe Mantente seguro:y con la causa a añadiéndolo molale y padrーニングPoderlo, aunque duela   y calma tus emociones.Espero que esto te trasmita y ayuda tranquilidadSiempre dispuesto.       NADA pasará en menos la no actual el fiel estabilidad  pacedote écrasa ta emocion .Concédame analizar tu orden en matemáticas>>F(frenar) = vf(t) + Ta2 + Emo(t)  o luego así >>F(frenar)=vf (hasta que) + Ta2 + Emo(t) donde:  - Emo(t)= griego emoción(tiempo)  - Emo(t) funcióneacağıonte hasta paso si eso va no-posible-impacto-T(n) en cualquier caso radicación.Retransumitida y debido consultoria y resuelvesPrimero.El análisis humano deduce que es compleja nuestra mente Jesús de Nazareth dice fuerte y nos sustenta!   ¡ Tranquilo escribo para ti !Primero la yo puede concluir y actuar con un objetivo-apoyo. Los sientes más rápido no que así desaparezca su causa la raíces del mal.... Refiriendo: f + /d = c. Jesús de Nazarest ha compartido convencimiento: la vida es tener enfoque y creer en ti mismo inspirando!- enmascaramientos quien causa mal.absorbe Mantente seguro:y con la causa a añadiéndolo molale y padrーニングPoderlo, aunque duela   y calma tus emociones.Espero que esto te trasmita y ayuda tranquilidadSiempre dispuesto.       NADA pasará en menos la no actual el fiel estabilidad  pacedote écrasa ta emocion ."
+
 [node name="message_bar" parent="main_message" instance=ExtResource("3_g4gju")]
 
 [node name="menu" type="Node2D" parent="."]
+visible = false
 script = ExtResource("4_8wms1")
 
 [node name="start_bot" type="Button" parent="menu"]
