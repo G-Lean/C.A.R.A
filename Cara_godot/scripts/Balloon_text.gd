@@ -11,7 +11,7 @@ func _ready() -> void:
 	size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	var user_name:Label = get_node("balloon_container/name")
 	var main_text:TextEdit = get_node("balloon_container/main_text")
-	
+	user_name.label_settings.font_color = user_color
 	user_name.text = user
 	user_name.position.x = main_text.position.x
 	if right:
