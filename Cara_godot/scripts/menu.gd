@@ -10,8 +10,8 @@ var ApiKeys = {
 }
 var model_in_use = "Mistral Small 3.1"
 func _ready() -> void:
-	_create_file()
 	config.load(SaveFilePath)
+	_create_file()
 	ApiKeys["Mistral Small 3.1"] = _get_value("Mistral Small 3.1","ApiKey")
 	ApiKeys["ChatGPT-4o"] = _get_value("ChatGPT-4o","ApiKey")
 	ApiKeys["DeepSeek R1"] = _get_value("DeepSeek R1","ApiKey")
@@ -21,7 +21,7 @@ func _ready() -> void:
 	print(ApiKeys)
 
 func _create_file() -> void:
-	if not FileAccess.file_exists(SaveFilePath):
+	if not FileAccess.file_exists(SaveFilePath) or not _content_is_correct():
 		DirAccess.make_dir_absolute(FolderFilePath)
 		config.set_value("Mistral Small 3.1","ApiKey","")
 		config.set_value("Mistral Small 3.1","Dir","mistralai/mistral-small-3.1-24b-instruct:free")
@@ -32,10 +32,28 @@ func _create_file() -> void:
 		config.set_value("Parameters","Last_Selected",0)
 		config.set_value("Parameters","User_name","User")
 		config.set_value("Parameters","User_color",Color.WHITE)
-		config.set_value("Parameters","Language","es-ES")
+		config.set_value("Parameters","Language","es")
 		config.set_value("Parameters","Max_history",30)
 		config.save(SaveFilePath)
 		print("Make model.ini")
+func _content_is_correct() -> bool:
+	var required_keys = [
+		["Mistral Small 3.1", "ApiKey"],
+		["Mistral Small 3.1", "Dir"],
+		["ChatGPT-4o", "ApiKey"],
+		["ChatGPT-4o", "Dir"],
+		["DeepSeek R1", "ApiKey"],
+		["DeepSeek R1", "Dir"],
+		["Parameters", "Last_Selected"],
+		["Parameters", "User_name"],
+		["Parameters", "User_color"],
+		["Parameters", "Language"],
+		["Parameters", "Max_history"]
+	]
+	for pair in required_keys:
+		if _get_value(pair[0], pair[1]) == null:
+			return false
+	return true
 
 func _set_value(Section,Key,Value) -> void:
 	_create_file()

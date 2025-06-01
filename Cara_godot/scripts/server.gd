@@ -1,7 +1,4 @@
 extends Control
-@onready var promt_file = "res://promts/promt_"
-
-
 @onready var control = $control
 
 var socket = WebSocketPeer.new()#Creamos el sockect del Websocket
@@ -69,6 +66,7 @@ func _on_start_bot_pressed() -> void:
 		else:
 			msg_received.emit("[API_IS_NULL]","unknown")
 			return
+		var promt_file:String = "res://promts/promt_"
 		promt_file += $menu._get_value("Parameters","Language")+".txt" if  $menu._get_value("Parameters","Language") == "es" else "en.txt"
 		print(promt_file)
 		var File = FileAccess.open(promt_file,FileAccess.READ)#Accedemos al archivo del promt

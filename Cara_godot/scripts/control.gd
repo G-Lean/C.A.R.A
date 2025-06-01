@@ -42,7 +42,7 @@ func _on_server_msg_send(msg: String) -> void:
 
 func _on_server_msg_received(msg: String, emotion: String) -> void:
 	if msg == "[Update parameters]": 
-		print("Parameters Uptaded")
+		print("Parameters updated")
 		return
 	var message:String = msg
 	message_bar.disabled = false

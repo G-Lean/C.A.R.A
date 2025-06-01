@@ -1,6 +1,7 @@
 import asyncio
 import websockets
 from websockets.exceptions import ConnectionClosedError, WebSocketException
+import re
 import emotions
 import chatbot
 
@@ -30,32 +31,30 @@ class WebSocketServer:
                         else:
                             await ws.send("Rostro no detectado" + f"++{emotion}")
                 else:
+                    data = dict(re.findall(r"\[(\w+)\](.*?)(?=\[\w+\]|$)", msg))
 
-                    if msg.startswith("[API_KEY]"):#Si el mensaje no posee la clave [API_KEY]
-                        api_ = msg.find("[API_KEY]")+len("[API_KEY]")
-                        #Se busca la ubicacion de la clave y se suma la clave para buscarla desde esa ubicacion
-                        bot_name = msg.find("[MODEL]")+len("[MODEL]")
-                        await asyncio.to_thread(self.Chatbot.set_model, msg[api_:bot_name-len("[MODEL]")],msg[bot_name:])
+                    if "API_KEY" in data and "MODEL" in data:
+                        await asyncio.to_thread(self.Chatbot.set_model, data["API_KEY"], data["MODEL"])
                         await ws.send("[Bot model loaded]")
-                    elif msg.startswith("[SET_PARAMETERS]"):
+
+                    elif "MAX_HISTORY" in data or "USER_NAME" in data or "CLEAR_HISTORY" in msg:
                         try:
-                            max_start = msg.find("[MAX_HISTORY]") + len("[MAX_HISTORY]")
-                            user_start = msg.find("[USER_NAME]") + len("[USER_NAME]")
-                            
-                            self.Max_history = int(msg[max_start:user_start - len("[USER_NAME]")])
-                            self.User_name = msg[user_start:]
-                            
-                            # Limpiar historial si se solicita
-                            if "[CLEAR_HISTORY]" in msg:
+                            if "MAX_HISTORY" in data:
+                                self.Max_history = int(data["MAX_HISTORY"])
+                            if "USER_NAME" in data:
+                                self.User_name = data["USER_NAME"]
+                            if "CLEAR_HISTORY" in msg:
                                 await asyncio.to_thread(self.Chatbot.clear_history)
-                            
+
                             await ws.send("[Update parameters]")
                         except ValueError:
-                            await ws.send("[ERROR] MAX_HISTORY debe ser un número (ej: 20)")
+                            await ws.send("[ERROR] cannot update parameters")
+
                     else:
-                        try_connect = await asyncio.to_thread(self.Chatbot.set_parameters, msg[15:],self.Max_history)
+                        try_connect = await asyncio.to_thread(self.Chatbot.set_parameters, msg[15:], self.Max_history)
                         await ws.send("[Bot initialized]")
                         print(try_connect)
+
 
         except (ConnectionClosedError, WebSocketException, ConnectionResetError) as e:
             print(f"[Error] Conexión cerrada inesperadamente: {e}")

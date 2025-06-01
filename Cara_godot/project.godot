@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Cara"
+config/description=" sistema de inteligencia artificial que analiza las emociones humanas en tiempo real mediante reconocimiento facial y permite mantener una conversación contextual con el usuario según su estado de ánimo."
 run/main_scene="uid://cs5a23eqvof4n"
 config/features=PackedStringArray("4.4", "Mobile")
+run/low_processor_mode=true
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout=""
+driver/enable_input=true
 
 [display]
 
@@ -62,6 +65,10 @@ LClick={
 [internationalization]
 
 locale/translations=PackedStringArray("res://lang/translations.en.translation", "res://lang/translations.es.translation")
+
+[physics]
+
+2d/physics_engine="Dummy"
 
 [rendering]
 
