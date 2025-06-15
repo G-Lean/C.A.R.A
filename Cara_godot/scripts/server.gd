@@ -1,6 +1,7 @@
 extends Control
 @onready var control = $control
 
+var promt_file:String = "res://promts/promt.txt"
 var socket = WebSocketPeer.new()#Creamos el sockect del Websocket
 var url = "ws://localhost:5501"#Definimos la url del puerto 5501
 
@@ -66,9 +67,7 @@ func _on_start_bot_pressed() -> void:
 		else:
 			msg_received.emit("[API_IS_NULL]","unknown")
 			return
-		var promt_file:String = "res://promts/promt_"
-		promt_file += $menu._get_value("Parameters","Language")+".txt" if  $menu._get_value("Parameters","Language") == "es" else "en.txt"
-		print(promt_file)
+		
 		var File = FileAccess.open(promt_file,FileAccess.READ)#Accedemos al archivo del promt
 		var File_content = File.get_as_text()#Obtenemos el contenido del archivo de texto
 		_send("[Initial_promt]"+File_content)
